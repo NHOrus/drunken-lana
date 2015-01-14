@@ -7,4 +7,8 @@ import (
 
 func main() {
 	fmt.Println("Hello World!")
+	shs := allShips()
+	for val, i := range *shs {
+		fmt.Println(val, i)
+	}
 }
