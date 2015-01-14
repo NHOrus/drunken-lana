@@ -25,3 +25,7 @@ func NewField(length int, width int) (retField *Field) {
 	retField.Width = width
 	return
 }
+
+func (Fi *Field) putShips(shs map[string]ship, putter func(*Field, *ship) error) error {
+	return nil
+}
