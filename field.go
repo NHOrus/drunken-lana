@@ -3,7 +3,7 @@ package main
 
 const (
 	empty = iota
-	ship
+	full
 	miss
 	hit
 )

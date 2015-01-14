@@ -7,4 +7,8 @@ import (
 
 func main() {
 	fmt.Println("Hello World!")
+	allships := importShips()
+	for _, val := range allships {
+		fmt.Println(val)
+	}
 }
