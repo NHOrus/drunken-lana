@@ -3,12 +3,27 @@ package main
 
 import (
 	//	"fmt"
-	termb "github.com/nsf/termbox-go"
+	"errors"
+	termbox "github.com/nsf/termbox-go"
 )
 
-func drawfield() error {
-	if err := termb.Init(); err != nil {
+func drawfield(lField <-chan Field, rField <-chan Field) error {
+	var lFl, rFl Field
+
+	if err := termbox.Init(); err != nil {
 		return err
 	}
+	defer termbox.Close()
+
+	//	termBuf := termbox.CellBuffer()
+	//	termSizW, termSizH := termbox.Size()
+
+	lFl = <-lField
+	rFl = <-rField
+
+	if lFl.Length != rFl.Length {
+		return errors.New("Can't do mismatched fields yet")
+	}
+
 	return nil
 }
