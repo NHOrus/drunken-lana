@@ -16,7 +16,7 @@ const ( //Those are all the states of the cell in the battledfield
 )
 
 var NoRep = errors.New("Can't shoot at things repeatedly")
-var WrStatErr = errors.New("Wat?")
+var WrStatErr = errors.New("Wat? This can not be!")
 
 func (st *State) change() error {
 	switch *st { //My first switch, ever!
@@ -50,11 +50,11 @@ func newField(length int, width int) (retField *Field) {
 	return
 }
 
-func (Fi *Field) putShips(shs map[string]ship, putter func(field *Field, fat int) error) error {
+func (Fi *Field) putShips(shs map[string]ship, act Actor) error {
 	for name, params := range shs {
 		fmt.Println(name)
 		for i := 0; i < params.Numbers; i++ {
-			if err := putter(Fi, params.Fatness); err != nil {
+			if err := act.Putter(Fi, params.Fatness); err != nil {
 				return err
 			}
 		}
