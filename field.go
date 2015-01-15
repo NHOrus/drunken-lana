@@ -15,16 +15,19 @@ const ( //Those are all the states of the cell in the battledfield
 	hit
 )
 
+var NoRep = errors.New("Can't shoot at things repeatedly")
+var WrStatErr = errors.New("Wat?")
+
 func (st *State) change() error {
-	switch *st {
+	switch *st { //My first switch, ever!
 	case empty:
 		*st = miss
 	case full:
 		*st = hit
 	case miss, hit:
-		return errors.New("Can't shoot at things repeatedly")
+		return NoRep
 	default:
-		return errors.New("Wat?")
+		return WrStatErr
 	}
 	return nil
 }
