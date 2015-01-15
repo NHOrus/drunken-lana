@@ -14,6 +14,7 @@ func newShip(F int, N int) ship {
 }
 
 func allShips() *map[string]ship {
+	//Those are russian rules. May need to add rules for field size later.
 	s := make(map[string]ship)
 	s["battleship"] = newShip(4, 1)
 	s["cruiser"] = newShip(3, 2)
