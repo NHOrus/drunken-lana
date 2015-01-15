@@ -22,3 +22,15 @@ func allShips() *map[string]ship {
 	s["cutter"] = newShip(1, 4)
 	return &s
 }
+
+type rules struct {
+	fWid, fLen int
+	Ships      *map[string]ship
+}
+
+func getRules() (rules, error) {
+	var r rules
+	r.Ships = allShips()
+	r.fWid, r.fLen = 10, 10
+	return r, nil
+}
