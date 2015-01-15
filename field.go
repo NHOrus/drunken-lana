@@ -5,15 +5,17 @@ import (
 	"fmt"
 )
 
+type State int
+
 const ( //Those are all the states of the cell in the battledfield
-	empty = iota
+	empty State = iota
 	full
 	miss
 	hit
 )
 
 type Cell struct {
-	state  int
+	state  State
 	weight float64 //Probability of the ship inside, for AI to target. Will be tricky
 }
 
