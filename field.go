@@ -1,11 +1,11 @@
-// field.go'
+// field.go
 package main
 
 import (
 	"fmt"
 )
 
-const (
+const ( //Those are all the states of the cell in the battledfield
 	empty = iota
 	full
 	miss
@@ -14,18 +14,18 @@ const (
 
 type Cell struct {
 	state  int
-	weight float64
+	weight float64 //Probability of the ship inside, for AI to target. Will be tricky
 }
 
 type Field struct {
 	Grid          *[][]Cell
-	Length, Width int
+	Length, Width int //Creating field based on rules
 }
 
 func newField(length int, width int) (retField *Field) {
 	tCell := make([][]Cell, length*width)
 	retField.Grid = &tCell
-	retField.Length = length
+	retField.Length = length //just in case
 	retField.Width = width
 	return
 }
