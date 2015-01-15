@@ -2,6 +2,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -13,6 +14,20 @@ const ( //Those are all the states of the cell in the battledfield
 	miss
 	hit
 )
+
+func (st *State) change() error {
+	switch *st {
+	case empty:
+		*st = miss
+	case full:
+		*st = hit
+	case miss, hit:
+		return errors.New("Can't shoot at things repeatedly")
+	default:
+		return errors.New("Wat?")
+	}
+	return nil
+}
 
 type Cell struct {
 	state  State
