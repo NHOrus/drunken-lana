@@ -42,7 +42,7 @@ type Field struct {
 	Length, Width int //Creating field based on rules
 }
 
-func newField(length int, width int) (retField *Field) {
+func newField(length int, width int) (retField Field) {
 	tCell := make([][]Cell, length*width)
 	retField.Grid = &tCell
 	retField.Length = length //just in case

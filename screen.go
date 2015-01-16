@@ -2,8 +2,8 @@
 package main
 
 import (
-	//	"fmt"
 	"errors"
+	"fmt"
 	termbox "github.com/nsf/termbox-go"
 )
 
@@ -15,7 +15,7 @@ func drawfield(lField <-chan Field, rField <-chan Field) error {
 		return err
 	}
 	defer termbox.Close()
-
+	fmt.Println("Initialized")
 	//	termBuf := termbox.CellBuffer()
 	termSizW, termSizH := termbox.Size()
 
