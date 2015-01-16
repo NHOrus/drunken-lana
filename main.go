@@ -18,9 +18,11 @@ func main() {
 	leftField := newField(rule.fLen, rule.fWid)
 	rightField := newField(rule.fLen, rule.fWid)
 
-	rfc := make(chan Field)
+	fmt.Println("Created fields")
+
+	rfc := make(chan Field, 1)
 	rfc <- rightField
-	lfc := make(chan Field)
+	lfc := make(chan Field, 1)
 	lfc <- leftField
 	fmt.Println("Beginning to draw")
 	drawfield(lfc, rfc)
