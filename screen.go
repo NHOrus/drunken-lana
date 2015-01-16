@@ -9,16 +9,16 @@ import (
 
 func drawfield(lField <-chan Field, rField <-chan Field) error {
 	var lFl, rFl Field
-
+	fmt.Println("We are in")
 	//Straight up copy from docs about how initialize our little image
 	if err := termbox.Init(); err != nil {
 		return err
 	}
 	defer termbox.Close()
-	fmt.Println("Initialized")
-	//	termBuf := termbox.CellBuffer()
-	termSizW, termSizH := termbox.Size()
 
+	fmt.Println("Initialized")
+	termSizW, termSizH := termbox.Size()
+	fmt.Println(termSizH, termSizW)
 	//We are getting field parameters. Possibly need to read them from rules, but...
 	lFl = <-lField
 	rFl = <-rField
