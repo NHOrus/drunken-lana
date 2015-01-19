@@ -39,9 +39,9 @@ func drawfield(lField <-chan Field, rField <-chan Field) error {
 		return errors.New("Terminal too small")
 	}
 
-	for varW := (termSizW - sFwid); varW < termSizW; varW++ {
+	for varW := 0; varW < sFwid; varW++ {
 		for varH := (termSizH - sFhei); varH < termSizH; varH++ {
-			termbox.SetCell(varW, varH, 'x', termbox.ColorBlack, termbox.ColorWhite)
+			termbox.SetCell(varW, varH, 'X', termbox.ColorBlack, termbox.ColorWhite)
 
 		}
 	}
