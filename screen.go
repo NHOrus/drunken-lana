@@ -12,7 +12,7 @@ func drawfield(lField <-chan Field, rField <-chan Field) error {
 	fmt.Println("We are in")
 	//Straight up copy from docs about how initialize our little image
 	if err := termbox.Init(); err != nil {
-		return err
+		panic(err)
 	}
 	defer termbox.Close()
 
