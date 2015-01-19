@@ -26,13 +26,15 @@ func allShips() *map[string]ship {
 }
 
 type rules struct { //rules declare what the hell is going on here.
-	fWid, fLen int              //field parameters
-	Ships      *map[string]ship //ship parameters
+	fWid  Width
+	fLen  Height           //field parameters
+	Ships *map[string]ship //ship parameters
 }
 
 func getRules() (rules, error) {
 	var r rules
 	r.Ships = allShips()
-	r.fWid, r.fLen = 10, 10 //again, russian rules, need some rework and unification
+	r.fWid = 10
+	r.fLen = 10
 	return r, nil
 }

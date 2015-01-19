@@ -7,6 +7,8 @@ import (
 )
 
 type State int
+type Width int
+type Height int
 
 const ( //Those are all the states of the cell in the battledfield
 	empty State = iota
@@ -38,15 +40,19 @@ type Cell struct {
 }
 
 type Field struct {
-	Grid          *[][]Cell
-	Length, Width int //Creating field based on rules
+	Grid    *[][]Cell
+	Fheight Height
+	Fwidth  Width //Creating field based on rules
 }
 
-func newField(length int, width int) (retField Field) {
-	tCell := make([][]Cell, length*width)
+func newField(fheight Height, fwidth Width) (retField Field) {
+	tCell := make([][]Cell, fwidth)
+	for i := range tCell {
+		tCell[i] = make([]Cell, fheight)
+	}
 	retField.Grid = &tCell
-	retField.Length = length //just in case
-	retField.Width = width
+	retField.Fheight = fheight //just in case
+	retField.Fwidth = fwidth
 	return
 }
 

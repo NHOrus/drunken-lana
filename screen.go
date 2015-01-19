@@ -23,12 +23,12 @@ func drawfield(lField <-chan Field, rField <-chan Field) error {
 	lFl = <-lField
 	rFl = <-rField
 	//Sanity checks
-	if (lFl.Length != rFl.Length) && (lFl.Width != rFl.Width) {
+	if (lFl.Fheight != rFl.Fheight) && (lFl.Fwidth != rFl.Fwidth) {
 		return errors.New("Can't do mismatched fields yet")
 	}
 
-	sFlen := lFl.Length + rFl.Length + 1
-	sFwid := lFl.Width + rFl.Width + 3
+	sFlen := lFl.Fheight + rFl.Fheight + 1
+	sFwid := lFl.Fwidth + rFl.Fwidth + 3
 	//one field in Heigth, two fields in Width, plus line for identifications of rows and columns
 
 	//And more sanity checks
